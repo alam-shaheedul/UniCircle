@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a scoped change that fits the approved UniCircle requirements.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or requirement
+      description: Link the approved requirement/design when available.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe observable behavior without prescribing an unrelated redesign.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance checks
+      description: List how the team will know the change is complete.
+    validations:
+      required: true
+

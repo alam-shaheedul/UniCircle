@@ -1,0 +1,140 @@
+name: unicircle
+
+# Local production-image stack. Only the frontend is publicly reachable.
+# Use --env-file .env.compose; never reuse development credentials in production.
+x-api: &api
+  image: unicircle-backend:${IMAGE_TAG:-local}
+  build:
+    context: ./backend
+    args:
+      IMAGE_VERSION: ${IMAGE_TAG:-local}
+      VCS_REF: ${VCS_REF:-unknown}
+  environment:
+    APP_ENV: production
+    FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+    DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql+psycopg://${POSTGRES_USER:-unicircle_docker_dev}:${POSTGRES_PASSWORD:?Set a local-only password in .env.compose}@postgres:5432/${POSTGRES_DB:-unicircle_docker_dev}}
+    DATABASE_STARTUP_TIMEOUT_SECONDS: ${DATABASE_STARTUP_TIMEOUT_SECONDS:-60}
+    DATABASE_STARTUP_RETRY_SECONDS: ${DATABASE_STARTUP_RETRY_SECONDS:-2}
+    JWT_SECRET: ${JWT_SECRET:-}
+    JWT_ISSUER: ${JWT_ISSUER:-unicircle-api}
+    JWT_AUDIENCE: ${JWT_AUDIENCE:-unicircle-web}
+    JWT_ACCESS_TOKEN_MINUTES: ${JWT_ACCESS_TOKEN_MINUTES:-30}
+    OTP_PEPPER: ${OTP_PEPPER:-}
+    SMTP_HOST: ${SMTP_HOST:-}
+    SMTP_PORT: ${SMTP_PORT:-587}
+    SMTP_TLS_MODE: ${SMTP_TLS_MODE:-starttls}
+    SMTP_USERNAME: ${SMTP_USERNAME:-}
+    SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+    SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-}
+    RAG_CHAT_PROVIDER: ${RAG_CHAT_PROVIDER:-auto}
+    GROQ_API_KEY: ${GROQ_API_KEY:-}
+    GROQ_CHAT_MODEL: ${GROQ_CHAT_MODEL:-qwen/qwen3.8-27b}
+    GROQ_TIMEOUT_SECONDS: ${GROQ_TIMEOUT_SECONDS:-60}
+    GROQ_MAX_OUTPUT_TOKENS: ${GROQ_MAX_OUTPUT_TOKENS:-512}
+    OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+    OLLAMA_CHAT_MODEL: ${OLLAMA_CHAT_MODEL:-qwen3:1.7b}
+    OLLAMA_EMBEDDING_MODEL: ${OLLAMA_EMBEDDING_MODEL:-embeddinggemma:300m}
+    RAG_KNOWLEDGE_MODE: ${RAG_KNOWLEDGE_MODE:-curated}
+  init: true
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: ["/tmp:rw,noexec,nosuid,size=64m,mode=1777"]
+  pids_limit: 256
+  stop_grace_period: 30s
+  logging: &logs
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  postgres:
+    image: postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-unicircle_docker_dev}
+      POSTGRES_USER: ${POSTGRES_USER:-unicircle_docker_dev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a local-only password in .env.compose}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'pg_isready -h 127.0.0.1 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"',
+        ]
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 12
+    restart: unless-stopped
+    networks: [database]
+    user: postgres
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+      - /var/run/postgresql:rw,noexec,nosuid,size=16m,uid=70,gid=70,mode=0775
+    pids_limit: 256
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 30s
+    logging: *logs
+
+  migrate:
+    <<: *api
+    command: [sh, -c, "python -m app.db.wait && python -m alembic upgrade head"]
+    healthcheck:
+      disable: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks: [database]
+    restart: "no"
+
+  backend:
+    <<: *api
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    networks: [app, database]
+    restart: unless-stopped
+
+  frontend:
+    image: unicircle-frontend:${IMAGE_TAG:-local}
+    build:
+      context: ./frontend
+      args:
+        IMAGE_VERSION: ${IMAGE_TAG:-local}
+        VCS_REF: ${VCS_REF:-unknown}
+    environment:
+      BACKEND_API_URL: http://backend:8000
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks: [app]
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+      - /app/.next/cache:rw,noexec,nosuid,size=128m,uid=1000,gid=1000,mode=0700
+    pids_limit: 256
+    stop_grace_period: 30s
+    restart: unless-stopped
+    logging: *logs
+
+volumes:
+  postgres_data:
+
+networks:
+  app:
+  database:
+    internal: true

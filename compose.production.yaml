@@ -1,0 +1,11 @@
+# Preparation overlay, not a hosting/deployment decision. Supply reviewed runtime
+# secrets and immutable image tags; run with --no-build behind an HTTPS proxy.
+services:
+  postgres:
+    ports: !reset []
+  frontend:
+    image: unicircle-frontend:${IMAGE_TAG:?Set a reviewed commit SHA or release version}
+  backend:
+    image: unicircle-backend:${IMAGE_TAG:?Set a reviewed commit SHA or release version}
+  migrate:
+    image: unicircle-backend:${IMAGE_TAG:?Set a reviewed commit SHA or release version}

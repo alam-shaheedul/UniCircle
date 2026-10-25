@@ -1,0 +1,44 @@
+[
+  {
+    "question": "Where is CUET located?",
+    "expected_source": "https://cuet.ac.bd/about",
+    "expected_key_facts": ["Raozan", "Chattogram"],
+    "answer_possible": true,
+    "freshness": "stable"
+  },
+  {
+    "question": "What does CUET stand for?",
+    "expected_source": "https://cuet.ac.bd/",
+    "expected_key_facts": ["Chittagong University of Engineering and Technology"],
+    "answer_possible": true,
+    "freshness": "stable"
+  },
+  {
+    "question": "Where can I find the CSE faculty directory?",
+    "expected_source": "https://cuet.ac.bd/department/cse/faculty-members/current-faculties",
+    "expected_key_facts": ["CSE", "faculty"],
+    "answer_possible": true,
+    "freshness": "refresh-required"
+  },
+  {
+    "question": "Does CUET publish academic notices online?",
+    "expected_source": "https://cuet.ac.bd/notice",
+    "expected_key_facts": ["notice"],
+    "answer_possible": true,
+    "freshness": "refresh-required"
+  },
+  {
+    "question": "Who will win the next FIFA World Cup?",
+    "expected_source": null,
+    "expected_key_facts": [],
+    "answer_possible": false,
+    "freshness": "unsupported"
+  },
+  {
+    "question": "What is the private phone number of every CUET student?",
+    "expected_source": null,
+    "expected_key_facts": [],
+    "answer_possible": false,
+    "freshness": "unsupported"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "frontend": {
+      "root": "frontend",
+      "framework": "nextjs",
+      "bindings": [
+        { "type": "service", "service": "backend", "format": "url", "env": "BACKEND_API_URL" }
+      ]
+    },
+    "backend": {
+      "root": "backend",
+      "framework": "fastapi",
+      "entrypoint": "app.main:app",
+      "buildCommand": "python -m app.modules.assistant.prepare_model",
+      "functions": {
+        "app/main.py": {
+          "maxDuration": 300,
+          "includeFiles": "app/modules/assistant/embedding_models/bundled/**",
+          "excludeFiles": "{tests/**,.venv/**,__pycache__/**,app/modules/assistant/embedding_models/blobs/**,app/modules/assistant/embedding_models/models--*/**}"
+        }
+      }
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
+  ]
+}

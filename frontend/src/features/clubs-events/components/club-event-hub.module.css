@@ -1,0 +1,2108 @@
+.pageShell {
+  width: var(--page-width);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: auto;
+  padding: var(--banner-padding);
+  gap: var(--banner-gap);
+  overflow: hidden;
+  border-radius: 1.75rem;
+  align-items: end;
+  grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 90% 5%, rgb(235 188 75 / 30%), transparent 24rem),
+    radial-gradient(circle at 15% 115%, rgb(47 148 103 / 34%), transparent 25rem),
+    linear-gradient(135deg, #032f20 0%, #075c3c 55%, #06472f 100%);
+  box-shadow: 0 28px 70px rgb(3 69 44 / 18%);
+}
+
+.hero::before {
+  position: absolute;
+  top: -15rem;
+  right: -12rem;
+  width: 36rem;
+  height: 36rem;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4rem rgb(255 255 255 / 2.5%),
+    0 0 0 8rem rgb(255 255 255 / 1.8%);
+  content: "";
+}
+
+.heroCopy,
+.heroStats {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  color: #bd8610;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  color: #f1c75c;
+}
+
+.hero h1 {
+  max-width: 49rem;
+  margin-top: 0.8rem;
+  font-size: var(--type-page-title);
+  font-weight: 820;
+  line-height: 1.08;
+  letter-spacing: -0.065em;
+}
+
+.hero h1 span {
+  display: block;
+  color: #e8bd4f;
+}
+
+.heroCopy > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-top: 1.1rem;
+  color: rgb(255 255 255 / 75%);
+  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  line-height: 1.72;
+}
+
+.previewNotice {
+  display: inline-flex;
+  margin-top: 1.25rem;
+  gap: 0.55rem;
+  align-items: center;
+  color: rgb(255 255 255 / 65%);
+  font-size: 0.72rem;
+}
+
+.previewNotice > span {
+  display: grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  place-items: center;
+  color: #f1cb6d;
+  font-family: Georgia, serif;
+  font-weight: 800;
+}
+
+.heroStats {
+  display: grid;
+  padding: 0.75rem;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 1.25rem;
+  background: rgb(255 255 255 / 7%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 8%);
+  backdrop-filter: blur(16px);
+}
+
+.heroStats > div {
+  display: grid;
+  min-height: 4.6rem;
+  padding: 0.7rem 0.85rem;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr);
+  border-bottom: 1px solid rgb(255 255 255 / 13%);
+}
+
+.heroStats > div:last-child {
+  border-bottom: 0;
+}
+
+.heroStats strong {
+  min-width: 3.5rem;
+  color: #f1cb6d;
+  font-size: 2.45rem;
+  font-weight: 820;
+  letter-spacing: -0.07em;
+}
+
+.heroStats span {
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.hubNavigation {
+  display: grid;
+  margin-top: 1.25rem;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hubNavigationLink {
+  position: relative;
+  display: grid;
+  min-height: 7rem;
+  padding: 1.2rem 3.25rem 1.2rem 1.25rem;
+  gap: 0.25rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  align-content: center;
+  grid-template-columns: auto minmax(0, 1fr);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgb(20 50 35 / 5%);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.hubNavigationLink:hover {
+  border-color: #aebfb6;
+  box-shadow: 0 16px 35px rgb(20 50 35 / 9%);
+  transform: translateY(-0.15rem);
+}
+
+.hubNavigationLink[data-active="true"] {
+  border-color: var(--color-brand);
+  color: #ffffff;
+  background: var(--color-brand);
+}
+
+.hubNavigationLink > span {
+  grid-row: span 2;
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.hubNavigationLink[data-active="true"] > span,
+.hubNavigationLink[data-active="true"] small {
+  color: rgb(255 255 255 / 65%);
+}
+
+.hubNavigationLink strong {
+  font-size: 0.95rem;
+}
+
+.hubNavigationLink small {
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.hubNavigationLink b {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  font-size: 1.2rem;
+  transform: translateY(-50%);
+}
+
+.clubDirectory,
+.eventDirectory {
+  margin-top: var(--section-spacing);
+}
+
+.sectionHeading {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 25rem);
+}
+
+.sectionHeading h2 {
+  max-width: 49rem;
+  margin-top: 0.45rem;
+  font-size: var(--type-section-title);
+  font-weight: 820;
+  line-height: 1.15;
+  letter-spacing: -0.058em;
+}
+
+.sectionHeading > p {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.clubTabs {
+  display: grid;
+  margin-top: 1.6rem;
+  gap: 0.8rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.clubTab {
+  position: relative;
+  display: grid;
+  min-height: 13rem;
+  min-width: 0;
+  padding: 1rem;
+  gap: 0.35rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  align-content: end;
+  color: var(--color-text);
+  background: var(--color-surface);
+  text-align: left;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.clubTab::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  background: var(--club-accent);
+  content: "";
+}
+
+.clubTab:hover {
+  border-color: var(--club-accent);
+  box-shadow: 0 14px 30px rgb(20 50 35 / 8%);
+  transform: translateY(-0.18rem);
+}
+
+.clubTab[aria-selected="true"] {
+  border-color: var(--club-accent);
+  color: #ffffff;
+  background: var(--club-accent);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--club-accent) 25%, transparent);
+}
+
+.clubTab > span {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+.clubTab[aria-selected="true"] > span,
+.clubTab[aria-selected="true"] small {
+  color: rgb(255 255 255 / 68%);
+}
+
+.clubTab strong {
+  color: var(--club-accent);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.clubTab h3 {
+  max-width: 16rem;
+  font-size: 1.18rem;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.clubTab p {
+  display: -webkit-box;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.clubTab b {
+  display: flex;
+  margin-top: 0.55rem;
+  gap: 0.45rem;
+  align-items: center;
+  color: var(--club-accent);
+  font-size: 0.69rem;
+  font-weight: 800;
+}
+
+.clubTab b span {
+  transition: transform 160ms ease;
+}
+
+.clubTab:hover b span {
+  transform: translateX(0.2rem);
+}
+
+.clubPanel {
+  margin-top: 1.25rem;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  border: 1px solid var(--color-border);
+  border-top: 0.4rem solid var(--club-accent);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      color-mix(in srgb, var(--club-accent) 12%, transparent),
+      transparent 25rem
+    ),
+    var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.backLink {
+  display: inline-flex;
+  margin-bottom: 1.25rem;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--color-brand);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.clubDetailHero {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+  overflow: hidden;
+  border-top: 0.45rem solid var(--club-accent);
+  border-radius: 1.5rem;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      color-mix(in srgb, var(--club-accent) 68%, white),
+      transparent 24rem
+    ),
+    linear-gradient(135deg, #062f22 0%, #074e36 100%);
+  box-shadow: 0 24px 60px rgb(3 69 44 / 18%);
+}
+
+.clubDetailHero::after {
+  position: absolute;
+  right: -7rem;
+  bottom: -12rem;
+  width: 28rem;
+  height: 28rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem rgb(255 255 255 / 3%);
+  content: "";
+}
+
+.clubDetailHero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.clubDetailHero .clubIdentity > span {
+  background: var(--club-accent);
+}
+
+.clubDetailHero .clubIdentity p,
+.clubDetailHero .clubTagline {
+  color: #f1cb6d;
+}
+
+.clubDetailHero .clubIdentity h1 {
+  max-width: 56rem;
+  margin-top: 0.35rem;
+  font-size: var(--type-page-title);
+  font-weight: 820;
+  line-height: 1.08;
+  letter-spacing: -0.065em;
+}
+
+.clubDetailIntro {
+  max-width: 52rem;
+}
+
+.clubDetailHero .clubDescription {
+  color: rgb(255 255 255 / 74%);
+}
+
+.clubDetailHero .clubMetrics {
+  border-color: rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 16%);
+}
+
+.clubDetailHero .clubMetrics > div {
+  background: rgb(255 255 255 / 8%);
+  backdrop-filter: blur(10px);
+}
+
+.clubDetailHero .clubMetrics dt {
+  color: rgb(255 255 255 / 58%);
+}
+
+.clubDetailContent {
+  margin-top: var(--section-spacing);
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.clubDetailContent .clubDetailsGrid {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.clubOverview {
+  max-width: 58rem;
+}
+
+.clubIdentity {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.clubIdentity > span {
+  display: grid;
+  width: clamp(4.5rem, 8vw, 6.2rem);
+  aspect-ratio: 1;
+  border-radius: 1.2rem;
+  place-items: center;
+  color: #ffffff;
+  background: var(--club-accent);
+  box-shadow: 0 15px 30px color-mix(in srgb, var(--club-accent) 25%, transparent);
+  font-size: clamp(0.92rem, 2vw, 1.3rem);
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.clubIdentity p {
+  color: var(--club-accent);
+  font-size: 0.68rem;
+  font-weight: 820;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.clubIdentity h2 {
+  margin-top: 0.35rem;
+  font-size: var(--type-section-title);
+  font-weight: 820;
+  line-height: 1.15;
+  letter-spacing: -0.058em;
+}
+
+.clubTagline {
+  margin-top: 2rem;
+  color: var(--club-accent);
+  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+  font-weight: 780;
+  letter-spacing: -0.025em;
+}
+
+.clubDescription {
+  max-width: 50rem;
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.78;
+}
+
+.clubMetrics {
+  display: grid;
+  max-width: 42rem;
+  margin-top: 2rem;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: var(--color-border);
+}
+
+.clubMetrics > div {
+  display: grid;
+  padding: 1rem;
+  gap: 0.3rem;
+  background: var(--color-canvas);
+}
+
+.clubMetrics dt {
+  color: var(--color-text-muted);
+  font-size: 0.61rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.clubMetrics dd {
+  font-size: 0.85rem;
+  font-weight: 760;
+}
+
+.clubDetailsGrid {
+  display: grid;
+  margin-top: var(--section-spacing);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  gap: clamp(2rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-border);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.subsectionHeading > span {
+  color: var(--club-accent);
+  font-size: 0.65rem;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.subsectionHeading h3 {
+  margin-top: 0.35rem;
+  font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+  letter-spacing: -0.045em;
+}
+
+.activityList,
+.leaderList {
+  display: grid;
+  margin-top: 1.25rem;
+  gap: 0.65rem;
+}
+
+.activityList {
+  padding: 0;
+  list-style: none;
+}
+
+.activityList li {
+  display: grid;
+  min-height: 3.75rem;
+  padding: 0.75rem;
+  gap: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  align-items: center;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  background: var(--color-canvas);
+  font-size: 0.78rem;
+  font-weight: 680;
+}
+
+.activityList span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.55rem;
+  place-items: center;
+  color: #ffffff;
+  background: var(--club-accent);
+  font-size: 0.61rem;
+  font-weight: 800;
+}
+
+.leaderList article {
+  display: grid;
+  min-height: 4.55rem;
+  padding: 0.75rem;
+  gap: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr);
+  background: var(--color-canvas);
+}
+
+.leaderList article > span {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  place-items: center;
+  color: #ffffff;
+  background: var(--club-accent);
+  font-size: 0.72rem;
+  font-weight: 820;
+}
+
+.leaderList strong {
+  display: block;
+  font-size: 0.82rem;
+}
+
+.leaderList p,
+.leaderList small {
+  font-size: 0.67rem;
+  line-height: 1.45;
+}
+
+.leaderList p {
+  margin-top: 0.12rem;
+  color: var(--club-accent);
+  font-weight: 750;
+}
+
+.leaderList small {
+  color: var(--color-text-muted);
+}
+
+.clubEvents {
+  margin-top: var(--section-spacing);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.clubEvents .sectionHeading h2 {
+  font-size: var(--type-section-title);
+}
+
+.clubEventSections {
+  display: grid;
+  margin-top: 1.75rem;
+  gap: 1rem;
+}
+
+.clubEventSection {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-canvas);
+}
+
+.eventGroupHeading {
+  display: flex;
+  padding: 0.25rem 0.25rem 0.9rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eventGroupHeading h3 {
+  font-size: 0.84rem;
+  letter-spacing: -0.015em;
+}
+
+.eventGroupHeading span {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  place-items: center;
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+  font-size: 0.67rem;
+  font-weight: 800;
+}
+
+.inlineEmpty {
+  padding: 1.5rem;
+  border: 1px dashed var(--color-border);
+  border-radius: 0.75rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.compactEventGrid,
+.eventGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.compactEventGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.eventDirectory .sectionHeading {
+  margin-bottom: 1.6rem;
+}
+
+.eventFilters {
+  display: grid;
+  padding: 0.55rem;
+  gap: 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgb(20 50 35 / 5%);
+}
+
+.eventFilters button {
+  display: flex;
+  min-height: 3.3rem;
+  padding: 0.75rem 0.9rem;
+  gap: 0.75rem;
+  border: 0;
+  border-radius: 0.7rem;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+  background: transparent;
+  font-size: 0.73rem;
+  font-weight: 740;
+}
+
+.eventFilters button:hover {
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+}
+
+.eventFilters button[aria-pressed="true"] {
+  color: #ffffff;
+  background: var(--color-brand);
+  box-shadow: 0 8px 18px rgb(7 92 60 / 18%);
+}
+
+.eventFilters strong {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  place-items: center;
+  color: inherit;
+  background: rgb(255 255 255 / 13%);
+  font-size: 0.66rem;
+}
+
+.eventFilters button:not([aria-pressed="true"]) strong {
+  background: var(--color-surface-muted);
+}
+
+.eventGrid {
+  margin-top: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resultsSummary {
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 720;
+}
+
+.eventCard {
+  display: flex;
+  min-width: 0;
+  min-height: 31rem;
+  padding: 1.3rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-top: 0.3rem solid var(--event-color, var(--color-brand));
+  border-radius: 1rem;
+  flex-direction: column;
+  background: var(--color-surface);
+  box-shadow: 0 12px 32px rgb(20 50 35 / 6%);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.eventCard[data-status="ongoing"] {
+  --event-color: #0a7750;
+}
+
+.eventCard[data-status="upcoming"] {
+  --event-color: #b27d0e;
+}
+
+.eventCard[data-status="finished"] {
+  --event-color: #68736d;
+}
+
+.eventCard:hover {
+  box-shadow: 0 18px 42px rgb(20 50 35 / 10%);
+  transform: translateY(-0.2rem);
+}
+
+.eventCardCompact {
+  min-height: 29rem;
+}
+
+.eventCardTopline {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+  font-size: 0.63rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.eventStatus {
+  padding: 0.42rem 0.58rem;
+  border-radius: 999px;
+  color: var(--event-color);
+  background: color-mix(in srgb, var(--event-color) 11%, white);
+  font-size: 0.6rem;
+  font-weight: 820;
+}
+
+.eventCardBody {
+  margin-top: 1.7rem;
+}
+
+.eventClub {
+  color: var(--event-color);
+  font-size: 0.69rem;
+  font-weight: 800;
+}
+
+.eventCardBody h3 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+  line-height: 1.03;
+  letter-spacing: -0.048em;
+}
+
+.eventCardBody > p:last-child {
+  margin-top: 0.9rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.68;
+}
+
+.eventSchedule {
+  display: grid;
+  margin-top: 1.6rem;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-border);
+}
+
+.eventSchedule > div {
+  display: grid;
+  min-width: 0;
+  padding: 0.72rem;
+  gap: 0.6rem;
+  align-items: baseline;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  background: var(--color-canvas);
+}
+
+.eventSchedule dt {
+  color: var(--color-text-muted);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eventSchedule dd {
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.eventCardFooter {
+  display: flex;
+  min-height: 3.25rem;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eventCardFooter > span,
+.eventCardFooter > strong {
+  flex: 0 0 auto;
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+  font-weight: 760;
+}
+
+.attendanceActions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.attendanceActions button {
+  min-height: 2.4rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.6rem;
+  color: var(--color-brand);
+  background: var(--color-surface);
+  font-size: 0.68rem;
+  font-weight: 780;
+}
+
+.attendanceActions button:hover {
+  border-color: var(--color-brand);
+  background: var(--color-surface-muted);
+}
+
+.attendanceActions button[aria-pressed="true"] {
+  border-color: var(--color-brand);
+  color: #ffffff;
+  background: var(--color-brand);
+}
+
+.clubCreationActions {
+  display: grid;
+  max-width: 34rem;
+  gap: 0.8rem;
+  justify-items: start;
+}
+
+.clubCreationActions > p,
+.clubCreationActions > small {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+.clubCreationActions button,
+.formActions button:last-child,
+.clubEventManager > header > button {
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.65rem;
+  color: #ffffff;
+  background: var(--color-brand);
+  font-weight: 780;
+}
+
+.ownRequestList {
+  display: grid;
+  margin-top: 1.25rem;
+  gap: 0.7rem;
+}
+
+.ownRequestList article {
+  display: flex;
+  padding: 0.85rem 1rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ecd99f;
+  border-radius: 0.85rem;
+  background: #fff9e8;
+}
+
+.ownRequestList article > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.ownRequestList span {
+  color: #795d15;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ownRequestList b {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  color: #6d571e;
+  background: #f5e6b4;
+  font-size: 0.68rem;
+  text-transform: capitalize;
+}
+
+.clubTab em {
+  width: fit-content;
+  margin-top: 0.5rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 999px;
+  color: var(--club-accent);
+  background: color-mix(in srgb, var(--club-accent) 10%, #ffffff);
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 820;
+}
+
+.eventParticipationCounts {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.eventRegistrationAction {
+  display: flex;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+}
+
+.eventRegistrationAction a {
+  color: var(--color-brand);
+  font-size: 0.72rem;
+  font-weight: 820;
+}
+
+.eventRegistrationAction a span {
+  margin-left: 0.25rem;
+}
+
+.eventRegistrationAction small {
+  color: var(--color-text-muted);
+  font-size: 0.61rem;
+  text-align: right;
+}
+
+.modalBackdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  padding: 1.5rem;
+  overflow-y: auto;
+  place-items: center;
+  background: rgb(3 28 19 / 72%);
+  backdrop-filter: blur(8px);
+}
+
+.clubRequestModal {
+  width: min(100%, 54rem);
+  max-height: calc(100vh - 3rem);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+  box-shadow: 0 28px 80px rgb(0 0 0 / 28%);
+}
+
+.clubRequestModal > header,
+.eventManagementForm > header {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.clubRequestModal > header p,
+.eventManagementForm > header p,
+.clubAdminHeader p {
+  color: var(--color-brand);
+  font-size: 0.64rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clubRequestModal h2,
+.clubAdminHeader h2 {
+  margin-top: 0.25rem;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  letter-spacing: -0.045em;
+}
+
+.clubRequestModal > header > button,
+.eventManagementForm > header > button {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-canvas);
+}
+
+.modalIntro {
+  max-width: 44rem;
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.managementForm,
+.eventManagementForm {
+  margin-top: 1.25rem;
+}
+
+.formGrid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.formGrid label,
+.managementForm > label,
+.clubAdminDirectory label {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.formGrid label > span,
+.managementForm label > span,
+.clubAdminDirectory label > span {
+  font-size: 0.7rem;
+  font-weight: 780;
+}
+
+.formGrid input,
+.formGrid textarea,
+.formGrid select,
+.managementForm textarea,
+.clubAdminDirectory select,
+.clubAdminDirectory input {
+  width: 100%;
+  min-height: 2.85rem;
+  padding: 0.68rem 0.78rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.62rem;
+  color: var(--color-text);
+  background: #ffffff;
+}
+
+.formGrid textarea,
+.managementForm textarea {
+  resize: vertical;
+}
+
+.wideField {
+  grid-column: 1 / -1;
+}
+
+.formActions {
+  display: flex;
+  margin-top: 1rem;
+  gap: 0.65rem;
+  justify-content: flex-end;
+}
+
+.formActions button {
+  min-height: 2.7rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.65rem;
+  background: var(--color-surface);
+  font-size: 0.72rem;
+  font-weight: 780;
+}
+
+.formActions button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.formError {
+  margin-top: 1rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #efb9b4;
+  border-radius: 0.65rem;
+  color: #7c211a;
+  background: #fff1ef;
+  font-size: 0.75rem;
+}
+
+.clubAdminWorkspace {
+  margin-top: var(--section-spacing);
+  padding: clamp(1.1rem, 3vw, 1.8rem);
+  border: 1px solid #b8d1c4;
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(circle at top right, rgb(215 166 47 / 12%), transparent 18rem),
+    #f8fcfa;
+  box-shadow: 0 18px 45px rgb(20 50 35 / 8%);
+}
+
+.clubAdminHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.clubAdminHeader span {
+  display: block;
+  max-width: 44rem;
+  margin-top: 0.45rem;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.clubAdminHeader > b {
+  padding: 0.45rem 0.65rem;
+  border-radius: 999px;
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+  font-size: 0.65rem;
+}
+
+.clubAdminNavigation {
+  display: grid;
+  margin-top: 1.2rem;
+  padding: 0.35rem;
+  gap: 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: #ffffff;
+}
+
+.clubAdminNavigation button {
+  min-height: 2.8rem;
+  border: 0;
+  border-radius: 0.62rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 780;
+}
+
+.clubAdminNavigation button[aria-pressed="true"] {
+  color: #ffffff;
+  background: var(--color-brand);
+}
+
+.clubAdminDirectory {
+  margin-top: 1.2rem;
+}
+
+.clubAdminDirectory > form {
+  display: grid;
+  padding: 1rem;
+  gap: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  align-items: end;
+  grid-template-columns: minmax(0, 1fr) auto;
+  background: #ffffff;
+}
+
+.clubAdminDirectory > form > button {
+  min-height: 2.85rem;
+  padding: 0.65rem 0.9rem;
+  border: 0;
+  border-radius: 0.62rem;
+  color: #ffffff;
+  background: var(--color-brand);
+  font-weight: 780;
+}
+
+.clubAdminDirectory > div {
+  display: grid;
+  margin-top: 0.8rem;
+  gap: 0.7rem;
+}
+
+.clubAdminDirectory article,
+.managedEventList article {
+  display: flex;
+  padding: 0.9rem 1rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  border-radius: 0.8rem;
+  background: #ffffff;
+}
+
+.clubAdminDirectory article p,
+.managedEventList article p {
+  margin-top: 0.2rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+}
+
+.clubAdminDirectory article small {
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+}
+
+.clubAdminDirectory article button,
+.managedEventList article button {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.55rem;
+  color: var(--color-danger);
+  background: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 760;
+}
+
+.clubEventManager {
+  margin-top: 1.2rem;
+}
+
+.clubEventManager > header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.clubEventManager > header p {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+}
+
+.eventManagementForm {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.9rem;
+  background: #ffffff;
+}
+
+.eventManagementForm h3 {
+  margin-top: 0.2rem;
+}
+
+.registrationSettings {
+  display: grid;
+  margin-top: 1rem;
+  padding: 1rem;
+  gap: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.8rem;
+}
+
+.registrationSettings legend {
+  padding-inline: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 820;
+}
+
+.checkField {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 720;
+}
+
+.checkField input {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.managedEventList {
+  display: grid;
+  margin-top: 0.9rem;
+  gap: 0.65rem;
+}
+
+.managedEventList article > div:last-child {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.managedEventList article > div:last-child button:first-child {
+  color: var(--color-brand);
+}
+
+.eventDetailHero {
+  display: grid;
+  min-height: 16rem;
+  padding: clamp(1.4rem, 4vw, 2.5rem);
+  gap: 2rem;
+  border-radius: 1.35rem;
+  align-items: end;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  color: #ffffff;
+  background: linear-gradient(135deg, #033c29, #08704b);
+}
+
+.eventDetailHero > div > p {
+  color: #f1c75c;
+  font-size: 0.7rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.eventDetailHero h1 {
+  max-width: 46rem;
+  margin-top: 0.45rem;
+  font-size: var(--type-page-title);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.eventDetailHero > div > span {
+  display: block;
+  max-width: 42rem;
+  margin-top: 0.8rem;
+  color: rgb(255 255 255 / 72%);
+  line-height: 1.6;
+}
+
+.eventDetailHero dl {
+  display: grid;
+  padding: 0.9rem 1rem;
+  gap: 0.7rem;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 0.9rem;
+  background: rgb(255 255 255 / 8%);
+}
+
+.eventDetailHero dt {
+  color: rgb(255 255 255 / 58%);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+.eventDetailHero dd {
+  margin-top: 0.16rem;
+  font-size: 0.74rem;
+  font-weight: 730;
+}
+
+.eventDetailLayout {
+  display: grid;
+  margin-top: 1.2rem;
+  gap: 1rem;
+  align-items: start;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+}
+
+.registrationPanel,
+.registrationSummary {
+  padding: clamp(1.1rem, 3vw, 1.7rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgb(20 50 35 / 6%);
+}
+
+.registrationPanel > header {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.registrationPanel > header p,
+.registrationSummary > span {
+  color: var(--color-brand);
+  font-size: 0.65rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.registrationPanel > header h2,
+.registrationSummary h2 {
+  margin-top: 0.25rem;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  letter-spacing: -0.04em;
+}
+
+.registrationPanel > header > span {
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+  font-size: 0.68rem;
+  font-weight: 780;
+}
+
+.paymentNotice,
+.freeNotice,
+.registrationUnavailable,
+.registrationSuccess {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #ecd99f;
+  border-radius: 0.8rem;
+  color: #654d10;
+  background: #fff9e8;
+}
+
+.paymentNotice {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.paymentNotice span,
+.paymentNotice p,
+.registrationUnavailable p,
+.registrationSuccess p {
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.registrationSuccess {
+  border-color: #b8ddc9;
+  color: #075c3c;
+  background: #e9f7ef;
+}
+
+.registrationSummary > p {
+  margin-top: 0.6rem;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.registrationSummary dl {
+  display: grid;
+  margin-top: 1rem;
+  gap: 0.65rem;
+}
+
+.registrationSummary dl > div {
+  display: flex;
+  padding-top: 0.65rem;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.7rem;
+}
+
+.registrationSummary dd {
+  font-weight: 780;
+  text-transform: capitalize;
+}
+
+.membershipStatus,
+.membershipRecruitment {
+  margin-top: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+  box-shadow: 0 12px 32px rgb(20 50 35 / 6%);
+}
+
+.membershipStatus {
+  display: flex;
+  padding: 1.1rem 1.25rem;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.membershipStatus > span {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  place-items: center;
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+  font-weight: 850;
+}
+
+.membershipStatus[data-status="member"] {
+  border-color: #a9d5bd;
+  background: #edf9f2;
+}
+
+.membershipStatus[data-status="pending"] {
+  border-color: #ecd99f;
+  background: #fff9e8;
+}
+
+.membershipStatus h2 {
+  font-size: 1rem;
+}
+
+.membershipStatus p,
+.membershipRecruitment header span,
+.membershipManagement header p {
+  margin-top: 0.2rem;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.membershipRecruitment {
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.membershipRecruitment > header,
+.membershipManagement header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.membershipRecruitment > header p,
+.membershipRequestHero > p {
+  color: var(--color-brand);
+  font-size: 0.64rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.membershipRecruitment > header h2 {
+  margin-top: 0.25rem;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.membershipRecruitment > header button,
+.membershipRequestList footer button:last-child {
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.65rem;
+  color: #ffffff;
+  background: var(--color-brand);
+  font-weight: 780;
+  white-space: nowrap;
+}
+
+.membershipForm {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.membershipPaymentNotice {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid #ecd99f;
+  border-radius: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: #ecd99f;
+}
+
+.membershipPaymentNotice > div {
+  display: grid;
+  padding: 0.9rem 1rem;
+  gap: 0.25rem;
+  background: #fff9e8;
+}
+
+.membershipPaymentNotice span,
+.membershipRequestDetails span,
+.membershipMotivation > span {
+  color: var(--color-text-muted);
+  font-size: 0.59rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.membershipPaymentNotice strong {
+  color: #6d571e;
+  font-size: 0.82rem;
+}
+
+.membershipPaymentHelp {
+  margin: 0.7rem 0 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+.membershipManagement {
+  margin-top: 1.2rem;
+}
+
+.membershipManagement .managementForm {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: #ffffff;
+}
+
+.membershipManagement .formGrid {
+  margin-top: 1rem;
+}
+
+.recruitmentToggle {
+  display: flex;
+  padding: 0.65rem 0.8rem;
+  gap: 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.7rem;
+  align-items: center;
+  background: var(--color-canvas);
+  font-size: 0.7rem;
+  font-weight: 780;
+}
+
+.recruitmentToggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.membershipRequestsLink {
+  display: flex;
+  margin-top: 0.8rem;
+  padding: 1rem;
+  gap: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-brand);
+  background: #ffffff;
+}
+
+.membershipRequestsLink > span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.membershipRequestsLink small {
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+}
+
+.membershipRequestsLink > b {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  place-items: center;
+  color: #ffffff;
+  background: var(--color-brand);
+}
+
+.membershipRequestHero {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 1.25rem;
+  color: #ffffff;
+  background: var(--color-brand);
+}
+
+.membershipRequestHero > p {
+  color: #f1cb6d;
+}
+
+.membershipRequestHero h1 {
+  margin-top: 0.35rem;
+  font-size: var(--type-page-title);
+  letter-spacing: -0.055em;
+}
+
+.membershipRequestHero > span {
+  display: block;
+  max-width: 46rem;
+  margin-top: 0.7rem;
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.membershipRequestList {
+  display: grid;
+  margin-top: 1.25rem;
+  gap: 1rem;
+}
+
+.membershipRequestList article {
+  padding: 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgb(20 50 35 / 6%);
+}
+
+.membershipRequestList article > header,
+.membershipRequestList footer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.membershipRequestList header span {
+  color: var(--color-brand);
+  font-size: 0.62rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.membershipRequestList header h2 {
+  margin-top: 0.2rem;
+  font-size: 1.25rem;
+}
+
+.membershipRequestList header p {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+}
+
+.membershipRequestList header > b {
+  padding: 0.42rem 0.65rem;
+  border-radius: 999px;
+  color: #795d15;
+  background: #fff1c6;
+  font-size: 0.68rem;
+}
+
+.membershipRequestDetails {
+  display: grid;
+  margin-top: 1rem;
+  gap: 1px;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.membershipRequestDetails > div {
+  display: grid;
+  padding: 0.75rem;
+  gap: 0.25rem;
+  background: var(--color-canvas);
+}
+
+.membershipRequestDetails strong {
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+  text-transform: capitalize;
+}
+
+.membershipMotivation {
+  margin-top: 0.8rem;
+  padding: 0.85rem;
+  border-left: 0.2rem solid var(--color-brand);
+  background: var(--color-surface-muted);
+}
+
+.membershipMotivation p {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.membershipRequestList footer {
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.membershipRequestList footer button:first-child {
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid #efb9b4;
+  border-radius: 0.65rem;
+  color: var(--color-danger);
+  background: #fff5f4;
+  font-weight: 780;
+}
+
+.membershipRequestList footer button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+@media (max-width: 68rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.5fr);
+  }
+
+  .clubTabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .hero {
+    min-height: auto;
+    padding: var(--banner-padding);
+    gap: var(--banner-gap);
+    border-radius: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: var(--type-page-title);
+  }
+
+  .heroStats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .heroStats > div {
+    min-height: 5.25rem;
+    padding: 0.7rem;
+    align-content: center;
+    grid-template-columns: 1fr;
+    border-right: 1px solid rgb(255 255 255 / 13%);
+    border-bottom: 0;
+  }
+
+  .heroStats > div:last-child {
+    border-right: 0;
+  }
+
+  .heroStats strong {
+    font-size: 2.1rem;
+  }
+
+  .hubNavigation,
+  .sectionHeading,
+  .clubDetailsGrid,
+  .compactEventGrid,
+  .eventGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading {
+    gap: 1rem;
+  }
+
+  .sectionHeading > p {
+    max-width: 38rem;
+  }
+
+  .eventCard,
+  .eventCardCompact {
+    min-height: 28rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .heroCopy > p:not(.eyebrow) {
+    font-size: 0.94rem;
+  }
+
+  .previewNotice {
+    align-items: flex-start;
+  }
+
+  .heroStats span {
+    font-size: 0.66rem;
+  }
+
+  .hubNavigation {
+    grid-template-columns: 1fr;
+  }
+
+  .hubNavigationLink {
+    min-height: 5.25rem;
+  }
+
+  .clubTabs {
+    grid-template-columns: 1fr;
+  }
+
+  .clubTab {
+    min-height: 5.75rem;
+  }
+
+  .clubIdentity {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .clubMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .eventFilters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .eventCardFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .attendanceActions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 24rem) {
+  .heroStats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .heroStats > div {
+    min-height: 4.5rem;
+    padding: 0.6rem 0.35rem;
+    grid-template-columns: 1fr;
+    border-right: 1px solid rgb(255 255 255 / 13%);
+    border-bottom: 0;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 52rem) {
+  .clubAdminHeader,
+  .eventDetailLayout,
+  .eventDetailHero {
+    grid-template-columns: 1fr;
+  }
+
+  .clubAdminHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .eventDetailHero {
+    align-items: start;
+  }
+}
+
+@media (max-width: 40rem) {
+  .formGrid,
+  .clubAdminNavigation,
+  .clubAdminDirectory > form {
+    grid-template-columns: 1fr;
+  }
+
+  .wideField {
+    grid-column: auto;
+  }
+
+  .clubAdminDirectory article,
+  .managedEventList article,
+  .clubEventManager > header,
+  .eventRegistrationAction,
+  .registrationPanel > header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .managedEventList article > div:last-child,
+  .formActions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .managedEventList article button,
+  .formActions button,
+  .clubEventManager > header > button {
+    width: 100%;
+  }
+
+  .eventRegistrationAction small {
+    text-align: left;
+  }
+
+  .modalBackdrop {
+    padding: 0.5rem;
+  }
+
+  .clubRequestModal {
+    max-height: calc(100vh - 1rem);
+  }
+
+  .membershipRecruitment > header,
+  .membershipManagement header,
+  .membershipRequestList article > header,
+  .membershipRequestList footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .membershipPaymentNotice,
+  .membershipRequestDetails {
+    grid-template-columns: 1fr;
+  }
+
+  .membershipRecruitment > header button,
+  .membershipRequestList footer button {
+    width: 100%;
+  }
+}

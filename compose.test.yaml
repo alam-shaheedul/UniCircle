@@ -1,0 +1,36 @@
+# Used only by verify_compose.mjs. Never combine this fixture with a real DB.
+services:
+  backend:
+    environment:
+      SSL_CERT_FILE: /test-mail/cert.pem
+    volumes:
+      - ${COMPOSE_SMOKE_MAIL_DIR:?Smoke script must set the isolated mail directory}:/test-mail:ro
+    depends_on:
+      smtp:
+        condition: service_healthy
+  smtp:
+    image: unicircle-backend:${IMAGE_TAG:?Set the tested image tag}
+    command: [python, /fixture/smtp.py]
+    environment:
+      MAIL_DIR: /mail
+    volumes:
+      - ./scripts/docker_smoke_smtp.py:/fixture/smtp.py:ro
+      - ${COMPOSE_SMOKE_MAIL_DIR:?Smoke script must set the isolated mail directory}:/mail
+    networks: [app]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=32m,mode=1777"]
+    pids_limit: 64
+    init: true
+    healthcheck:
+      test:
+        [
+          CMD,
+          python,
+          -c,
+          "import socket,ssl; c=ssl.create_default_context(cafile='/mail/cert.pem'); s=c.wrap_socket(socket.create_connection(('127.0.0.1',15465),timeout=2),server_hostname='smtp'); s.close()",
+        ]
+      interval: 2s
+      timeout: 4s
+      retries: 20

@@ -1,0 +1,1 @@
+"""Club and event domain."""

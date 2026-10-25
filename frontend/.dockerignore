@@ -1,0 +1,24 @@
+# Only build inputs are sent to Docker. Local guidance, secrets and caches stay out.
+**
+!Dockerfile
+!.dockerignore
+!package.json
+!package-lock.json
+!next.config.ts
+!tsconfig.json
+!eslint.config.mjs
+!postcss.config.mjs
+!src/
+!src/**
+!public/
+!public/**
+**/__tests__/
+**/*.test.*
+**/*.spec.*
+**/.env
+**/.env.*
+**/AGENTS.md
+**/CLAUDE.md
+**/*.log
+**/*.pem
+**/*.key

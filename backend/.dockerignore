@@ -1,0 +1,26 @@
+# Deny by default: only runtime source and pinned dependencies enter the build.
+**
+!Dockerfile
+!.dockerignore
+!requirements.lock
+!alembic.ini
+!app/
+!app/**
+!migrations/
+!migrations/**
+
+# Exclude local artifacts even when nested inside allowed source directories.
+**/__pycache__/
+**/*.py[cod]
+**/.env
+**/.env.*
+**/AGENTS.md
+**/CLAUDE.md
+**/*.log
+**/*.pem
+**/*.key
+**/*.db
+**/*.db-*
+**/*.sqlite*
+**/.pytest_cache/
+**/.ruff_cache/

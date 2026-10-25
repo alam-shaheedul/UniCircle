@@ -1,0 +1,4 @@
+# Test-only tooling, pinned to the versions used for local verification.
+# Runtime dependencies come from requirements.lock; do not re-resolve them here.
+pytest==9.1.1
+ruff==0.16.8
