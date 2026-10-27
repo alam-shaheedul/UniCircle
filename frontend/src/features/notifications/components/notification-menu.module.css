@@ -1,0 +1,129 @@
+.container {
+  position: relative;
+}
+
+.trigger {
+  position: relative;
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  place-items: center;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.trigger:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+}
+
+.trigger svg {
+  width: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.badge {
+  position: absolute;
+  top: -0.18rem;
+  right: -0.18rem;
+  display: grid;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding-inline: 0.22rem;
+  border: 2px solid var(--color-surface);
+  border-radius: 999px;
+  place-items: center;
+  color: #ffffff;
+  background: #c0352b;
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+.panel {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.7rem);
+  right: 0;
+  width: min(26rem, calc(100vw - 1.5rem));
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: 0 22px 60px rgb(15 40 27 / 18%);
+}
+
+.heading {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.heading p {
+  font-weight: 780;
+}
+
+.heading span {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.heading button {
+  padding: 0;
+  border: 0;
+  color: var(--color-brand);
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.heading button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.items {
+  max-height: 26rem;
+  overflow-y: auto;
+}
+
+.empty {
+  padding: 2rem 1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.viewAll {
+  display: block;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-brand);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 780;
+}
+
+.viewAll:hover {
+  background: var(--color-surface-muted);
+}
+
+@media (max-width: 34rem) {
+  .panel {
+    position: fixed;
+    top: 4.5rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    width: auto;
+  }
+}
